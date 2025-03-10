@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net462</TargetFramework>
+		<PowerAppsTargetsPath>$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\PowerApps</PowerAppsTargetsPath>
+		<SignAssembly>False</SignAssembly>
+		<AssemblyOriginatorKeyFile>RRK.Plugins.ImageAnalysis.snk</AssemblyOriginatorKeyFile>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+		<ProjectTypeGuids>{4C25E9B5-9FA6-436c-8E19-B395D2A65FAF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+	</PropertyGroup>
+
+	<Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Plugin.props" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Plugin.props')" />
+
+	<!--
+    NuGet pack and restore as MSBuild targets reference:
+    https://docs.microsoft.com/en-us/nuget/reference/msbuild-targets
+  -->
+	<PropertyGroup>
+		<PackageId>RRK.Plugins.ImageAnalysis</PackageId>
+		<Version>$(FileVersion)</Version>
+		<Authors>Rama Koneru</Authors>
+		<Company></Company>
+		<Description>Performs Image Analysis using Azure Vision OCR</Description>
+		<AssemblyName>RRK.Plugins.ImageAnalysis</AssemblyName>
+		<RootNamespace>RRK.Plugins.ImageAnalysis</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Azure.AI.Vision.ImageAnalysis" Version="1.0.0" />
+		<PackageReference Include="Microsoft.CrmSdk.CoreAssemblies" Version="9.0.2.*" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.PowerApps.MSBuild.Plugin" Version="1.*" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.*" PrivateAssets="All" />
+		<PackageReference Include="System.Text.Json" Version="9.0.0" />
+	</ItemGroup>
+
+	<Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Plugin.targets" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Plugin.targets')" />
+</Project>
