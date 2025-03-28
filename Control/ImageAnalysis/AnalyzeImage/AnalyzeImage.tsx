@@ -16,6 +16,7 @@ export interface AnalyzeImageProps {
     context: ComponentFramework.Context<IInputs> | undefined;
     imageText?:string;
     onImageTextChange: (imageText: string) => void;
+    controlHeight:string;
 }
 
 
@@ -31,8 +32,8 @@ const useStyles = makeStyles({
     imageAnalysisContainer: {
         display: "grid",
         gridTemplateColumns: '50% 50%',
-        height: '100vh',
-        maxHeight: '100vh',
+        height: '520px',
+        maxHeight: '520px',
         border: `1px solid ${tokens.colorNeutralStroke1}`,
         borderRadius: tokens.borderRadiusMedium
     },
@@ -47,16 +48,16 @@ const useStyles = makeStyles({
         gridColumn: '1',
         margin: '10px',
         display: 'flex',
-        flex:'0 0 calc(100% - 20px)',
-        maxHeight: 'calc(100vh - 20px)'
+        flex:'0 0 500px',
+        maxHeight: '500px'
     },
     rightContainer: {
         gridColumn: '2',
         display: 'flex',
         flexDirection: 'column',
         margin: '10px',
-        flex:'0 0 calc(100% - 20px)',
-        maxHeight: 'calc(100vh - 20px)'
+        flex:'0 0 500px',
+        maxHeight: '500px'
     },
     imageParentContainer: {
         position: 'relative',
@@ -355,15 +356,20 @@ export const AnalyzeImage: React.FC<AnalyzeImageProps> = (analyzeImageProps: Ana
     }
 
     const drawBoundingBoxes = ({ imageUrl, textBlocks, canvasRef }: DrawBoundingBoxesProps) => {
+       
+       
+        const image = new window.Image();
+        image.src = imageUrl ?? "";
+        image.hidden = true;
+       
+       
         const canvas = canvasRef.current;
         if (!canvas) return;
 
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
-        const image = new window.Image();
-        image.src = imageUrl ?? "";
-        image.hidden = true;
+
 
         image.onload = () => {
             // Set canvas size to match image
@@ -395,9 +401,6 @@ export const AnalyzeImage: React.FC<AnalyzeImageProps> = (analyzeImageProps: Ana
                     ctx.closePath();
                     ctx.stroke();
 
-                    // Optional: Add text label
-                    //ctx.fillStyle = 'hsla(120, 92.10%, 34.90%, 0.80)';
-                   // ctx.fillText(line.Text, points[0].X, points[0].Y - 5);
                 });
             });
 

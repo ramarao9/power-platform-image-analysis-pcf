@@ -36,12 +36,6 @@ namespace ImageAnalysis.Services
             return textBlocksJSON;
         }
 
-
-
-
-
-
-
         private AzureVisionConfig GetAzureVisionConfig(IOrganizationService organizationService)
         {
             EnvironmentVariableRepository evvRepository = new EnvironmentVariableRepository(organizationService);

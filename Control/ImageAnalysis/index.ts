@@ -25,7 +25,8 @@ export class ImageAnalysis implements ComponentFramework.StandardControl<IInputs
         uploadIcon: "",
         imageText: "",
         context: undefined,
-        onImageTextChange: this.onImageTextValueChange
+        onImageTextChange: this.onImageTextValueChange,
+        controlHeight:'500px'
     };
 
 

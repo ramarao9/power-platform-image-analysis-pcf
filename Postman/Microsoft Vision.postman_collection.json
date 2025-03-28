@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "432bf566-50f8-4d47-af1e-50274582947f",
+		"name": "Microsoft Vision",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3320643"
+	},
+	"item": [
+		{
+			"name": "Analyze Document-Read",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"operationId\", pm.response.headers.get(\"Operation-Location\"));\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "///Mac/Home/Downloads/vladislav-klapin-PVr9Gsj93Pc-unsplash.jpg"
+					}
+				},
+				"url": {
+					"raw": "{{Endpoint}}/computervision/imageanalysis:analyze?api-version={{Version}}&features=read",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"computervision",
+						"imageanalysis:analyze"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "{{Version}}"
+						},
+						{
+							"key": "features",
+							"value": "read"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{APIKey}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Ocp-Apim-Subscription-Key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
